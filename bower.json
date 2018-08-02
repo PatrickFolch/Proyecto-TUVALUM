@@ -1,0 +1,20 @@
+{
+  "name": "project-tuvalum",
+  "description": "A Vue.js project",
+  "main": "",
+  "authors": [
+    "PatrickFolch <patrickfolch2@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/PatrickFolch/Proyecto-TUVALUM",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3"
+  }
+}
