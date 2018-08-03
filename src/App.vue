@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png">-->
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <!--<h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -15,7 +15,7 @@
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
@@ -24,13 +24,17 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Proyecto Tuvalum'
     }
   }
 }
 </script>
 
 <style>
+body{
+  background-color: whitesmoke;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -43,7 +47,13 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-
+h1{
+  text-align: center;
+  color:darkblue;
+}
+h3{
+    color:blue;
+}
 ul {
   list-style-type: none;
   padding: 0;
@@ -56,5 +66,18 @@ li {
 
 a {
   color: #42b983;
+}
+label{
+  color: aqua;
+}
+.casco{
+  text-align: center;
+}
+
+.bici{
+  text-align: center;
+}
+.formulario{
+  text-align: center;
 }
 </style>
