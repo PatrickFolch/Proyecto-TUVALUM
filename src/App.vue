@@ -13,10 +13,10 @@
             <form>
               <label for="">Tipo de producto</label>
               <select v-model="select" class="form-control">
-                <option selected>Elige...</option>
-                <option value="Cascos">Cascos</option>
-                <option value="Bicicletas">Bicicletas</option>
-              </select>
+                                <option selected>Elige...</option>
+                                <option value="Cascos">Cascos</option>
+                                <option value="Bicicletas">Bicicletas</option>
+                              </select>
               <div v-if="select==='Cascos'">
                 <button type="button" v-on:click="view='2a'" class="btn btn-info">Siguiente</button>
               </div>
@@ -37,13 +37,13 @@
               <!-- Marca -->
               <label for="">Marca</label>
               <select id="" class="form-control">
-                <option selected>Elige...</option>
-                <option value="1">marca 1</option>
-                <option value="2">marca 2</option>
-                <option value="3">marca 3</option>
-                <option value="4">marca 4</option>
-                <option value="5">marca 5</option>
-              </select>
+                                <option selected>Elige...</option>
+                                <option value="1">marca 1</option>
+                                <option value="2">marca 2</option>
+                                <option value="3">marca 3</option>
+                                <option value="4">marca 4</option>
+                                <option value="5">marca 5</option>
+                              </select>
               <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
               <button type="button" v-on:click="view='3a'" class="btn btn-info">Siguiente</button>
             </form>
@@ -78,114 +78,186 @@
             <form>
               <!-- Marca -->
               <label for="">Marca</label>
-              <select id="" class="form-control">
-                <option selected>Elige...</option>
-                <option value="marca 1">marca 1</option>
-                <option value="marca 2">marca 2</option>
-                <option value="marca 3">marca 3</option>
-                <option value="marca 4">marca 4</option>
-                <option value="marca 5">marca 5</option>
-              </select>
+              <select v-model="marcas" id="" class="form-control">
+                                <option selected>Elige...</option>
+                                <option value="marca 1">marca 1</option>
+                                <option value="marca 2">marca 2</option>
+                                <option value="marca 3">marca 3</option>
+                                <option value="marca 4">marca 4</option>
+                                <option value="marca 5">marca 5</option>
+                              </select>
               <!-- Modelos -->
+              <div v-if="marcas==='marca 1'">
                 <label for="">Modelo</label>
                 <select v-model="modelos" id="" class="form-control">
-                  <option selected>Elige...</option>
-                  <option value="1">modelo 1</option>
-                  <option value="2">modelo 2</option>
-                  <option value="3">modelo 3</option>
-                  <option value="4">modelo 4</option>
-                  <option value="5">modelo 5</option>
-                </select>
+                                <option selected>Elige...</option>
+                                <option value="1">modelo 1a</option>
+                                <option value="2">modelo 2a</option>
+                                <option value="3">modelo 3a</option>
+                                <option value="4">modelo 4a</option>
+                                <option value="5">modelo 5a</option>
+                              </select>
                 <!-- No existe modelo -->
-                <div class="form-check">
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="" disabled>
+                    <input type="checkbox" class="custom-control-input" id="">
                     <label class="custom-control-label" for="">El modelo no existe</label>
                   </div>
                 </div>
-                <!-- Daños -->
-                <label for="">Daños Mecánicos</label>
+              <div v-if="marcas==='marca 2'">
+                <label for="">Modelo</label>
+                <select v-model="modelos" id="" class="form-control">
+                                <option selected>Elige...</option>
+                                <option value="1">modelo 1b</option>
+                                <option value="2">modelo 2b</option>
+                                <option value="3">modelo 3b</option>
+                                <option value="4">modelo 4b</option>
+                                <option value="5">modelo 5b</option>
+                              </select>
+                <!-- No existe modelo -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="">
+                  <label class="form-check-label" for="">
+                                  El modelo no esta en la lista
+                                </label>
+                </div>
+              </div>
+              <div v-if="marcas==='marca 3'">
+                <label for="">Modelo</label>
                 <select id="" class="form-control">
-                  <option selected>Elige...</option>
-                  <option value="0">0: bicicleta nueva</option>
-                  <option value="1">1: muy poco uso</option>
-                  <option value="2">2: usada</option>
-                  <option value="3">3: con bastante uso</option>
-                  <option value="4">4: puede necesitar algún repuesto</option>
-                </select>
-                <label for="">Daños Estéticos</label>
+                                <option selected>Elige...</option>
+                                <option value="1">modelo 1c</option>
+                                <option value="2">modelo 2c</option>
+                                <option value="3">modelo 3c</option>
+                                <option value="4">modelo 4c</option>
+                                <option value="5">modelo 5c</option>
+                              </select>
+                <!-- No existe modelo -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="">
+                  <label class="form-check-label" for="">
+                                  El modelo no esta en la lista
+                                </label>
+                </div>
+              </div>
+              <div v-if="marcas==='marca 4'">
+                <label for="">Modelo</label>
                 <select id="" class="form-control">
-                  <option selected>Elige...</option>
-                  <option value="0">0: bicicleta nueva</option>
-                  <option value="1">1: muy poco uso</option>
-                  <option value="2">2: usada</option>
-                  <option value="3">3: con bastante uso</option>
-                  <option value="4">4: puede necesitar algún repuesto</option>
-                </select>
-                <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
-                <button type="button" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
+                                <option selected>Elige...</option>
+                                <option value="1">modelo 1d</option>
+                                <option value="2">modelo 2d</option>
+                                <option value="3">modelo 3d</option>
+                                <option value="4">modelo 4d</option>
+                                <option value="5">modelo 5d</option>
+                              </select>
+                <!-- No existe modelo -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="">
+                  <label class="form-check-label" for="">
+                                  El modelo no esta en la lista
+                                </label>
+                </div>
+              </div>
+              <div v-if="marcas==='marca 5'">
+                <label for="">Modelo</label>
+                <select id="" class="form-control">
+                                <option selected>Elige...</option>
+                                <option value="1">modelo 1e</option>
+                                <option value="2">modelo 2e</option>
+                                <option value="3">modelo 3e</option>
+                                <option value="4">modelo 4e</option>
+                                <option value="5">modelo 5e</option>
+                              </select>
+                <!-- No existe modelo -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="">
+                  <label class="form-check-label" for="">
+                                  El modelo no esta en la lista
+                                </label>
+                </div>
+              </div>
+              <!-- Daños -->
+              <label for="">Daños Mecánicos</label>
+              <select id="" class="form-control">
+                                <option selected>Elige...</option>
+                                <option value="0">0: bicicleta nueva</option>
+                                <option value="1">1: muy poco uso</option>
+                                <option value="2">2: usada</option>
+                                <option value="3">3: con bastante uso</option>
+                                <option value="4">4: puede necesitar algún repuesto</option>
+                              </select>
+              <label for="">Daños Estéticos</label>
+              <select id="" class="form-control">
+                                <option selected>Elige...</option>
+                                <option value="0">0: bicicleta nueva</option>
+                                <option value="1">1: muy poco uso</option>
+                                <option value="2">2: usada</option>
+                                <option value="3">3: con bastante uso</option>
+                                <option value="4">4: puede necesitar algún repuesto</option>
+                              </select>
+              <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
             </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Imagen del Producto -->
-      <div class="formularios" id="form-3b" v-if="view === '3b'">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="form-group col-md-4">
-              <form>
-                <label for="">Imagen del Producto</label>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="" lang="es">
-                  <label class="custom-file-label" for="">Seleccione 1ºr imagen</label>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="" lang="es">
-                  <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="" lang="es">
-                  <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
-                </div>
-                <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
-                <button type="button" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Precio -->
-      <div class="formularios" id="form-4b" v-if="view === '4b'">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="form-group col-md-4">
-              <form>
-                <label for="">Precio</label>
-                <input class="form-control" type="number">
-                <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
-                <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Correo -->
-      <div class="formularios" id=form-5ab v-if="view==='5ab'">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="form-group col-md-4">
-              <form>
-                <label for="">Enviar email</label>
-                <input class="form-control" type="email" name="" id="">
-                <button type="button" v-on:click="view='1'" class="btn btn-info">Volver Inicio</button>
-                <button type="button" class="btn btn-info">Enviar</button>
-              </form>
-            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Imagen del Producto -->
+    <div class="formularios" id="form-3b" v-if="view === '3b'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <form>
+              <label for="">Imagen del Producto</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="" lang="es">
+                <label class="custom-file-label" for="">Seleccione 1ºr imagen</label>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="" lang="es">
+                <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="" lang="es">
+                <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
+              </div>
+              <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Precio -->
+    <div class="formularios" id="form-4b" v-if="view === '4b'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <form>
+              <label for="">Precio</label>
+              <input class="form-control" type="number">
+              <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Correo -->
+    <div class="formularios" id=form-5ab v-if="view==='5ab'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <form>
+              <label for="">Enviar email</label>
+              <input class="form-control" type="email" name="" id="">
+              <button type="button" v-on:click="view='1'" class="btn btn-info">Volver Inicio</button>
+              <button type="button" class="btn btn-info">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -196,17 +268,18 @@
         msg: 'Proyecto Tuvalum',
         view: '1',
         select: '',
+        marcas: '',
+        modelos: ''
       }
     }
   }
-
 </script>
 
 <style>
   body {
     background-color: whitesmoke;
   }
-
+  
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -214,61 +287,61 @@
     text-align: center;
     color: #2c3e50;
   }
-
+  
   h1,
   h2 {
     font-weight: normal;
   }
-
+  
   h1 {
     text-align: center;
     color: darkblue;
   }
-
+  
   h3 {
     color: blue;
     margin: 20px;
   }
-
+  
   ul {
     list-style-type: none;
     padding: 0;
   }
-
+  
   li {
     display: inline-block;
     margin: 0 10px;
   }
-
+  
   a {
     color: #42b983;
   }
-
+  
   label {
     color: aqua;
     margin: 10px;
   }
-
+  
   .formularios {
     text-align: center;
     margin-top: 30px;
     padding: 40px;
   }
-
+  
   button {
     margin: 20px;
   }
-
+  
   img {
     height: 150px;
     /* width:400px; */
   }
-
-
+  
+  
   /* input{
        margin: 60px;
      } */
-
+  
   .ima {
     text-align: left;
     background-color: white;
@@ -277,11 +350,10 @@
     height: 150px;
     width: 100%;
   }
-
+  
   .titulo {
     text-align: center;
     /* background-color: whitesmoke; */
     margin: 20px;
   }
-
 </style>
