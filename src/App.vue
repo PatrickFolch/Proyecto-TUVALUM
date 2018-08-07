@@ -1,83 +1,287 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png">-->
-    <h1>{{ msg }}</h1>
-    <!--<h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul> -->
-  </div>
+    <div class="container-fluid ima">
+      <img src="./assets/indice.png">
+      <div class="titulo d-none d-md-block">
+        <h1>{{ msg }}</h1>
+      </div>
+    </div>
+    <div class="formularios" id=form-1 v-if="view === '1'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <form>
+              <label for="">Tipo de producto</label>
+              <select v-model="select" class="form-control">
+                <option selected>Elige...</option>
+                <option value="Cascos">Cascos</option>
+                <option value="Bicicletas">Bicicletas</option>
+              </select>
+              <div v-if="select==='Cascos'">
+                <button type="button" v-on:click="view='2a'" class="btn btn-info">Siguiente</button>
+              </div>
+              <div v-if="select==='Bicicletas'">
+                <button type="button" v-on:click="view='2b'" class="btn btn-info">Siguiente</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="formularios" id="form-2a" v-if="view === '2a'">
+      <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+          <div class="form-group col-md-4">
+            <h3>Cascos</h3>
+            <form>
+              <!-- Marca -->
+              <label for="">Marca</label>
+              <select id="" class="form-control">
+                <option selected>Elige...</option>
+                <option value="1">marca 1</option>
+                <option value="2">marca 2</option>
+                <option value="3">marca 3</option>
+                <option value="4">marca 4</option>
+                <option value="5">marca 5</option>
+              </select>
+              <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='3a'" class="btn btn-info">Siguiente</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Imagen del Producto -->
+    <div class="formularios" id="form-3a" v-if="view === '3a'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <form>
+              <label for="">Imagen del Producto</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="" lang="es">
+                <label class="custom-file-label" for="">Seleccione imagen </label>
+              </div>
+              <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bicicletas -->
+    <div class="formularios" id="form-2b" v-if="view === '2b'">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4">
+            <h3>Bicicletas</h3>
+            <form>
+              <!-- Marca -->
+              <label for="">Marca</label>
+              <select id="" class="form-control">
+                <option selected>Elige...</option>
+                <option value="marca 1">marca 1</option>
+                <option value="marca 2">marca 2</option>
+                <option value="marca 3">marca 3</option>
+                <option value="marca 4">marca 4</option>
+                <option value="marca 5">marca 5</option>
+              </select>
+              <!-- Modelos -->
+                <label for="">Modelo</label>
+                <select v-model="modelos" id="" class="form-control">
+                  <option selected>Elige...</option>
+                  <option value="1">modelo 1</option>
+                  <option value="2">modelo 2</option>
+                  <option value="3">modelo 3</option>
+                  <option value="4">modelo 4</option>
+                  <option value="5">modelo 5</option>
+                </select>
+                <!-- No existe modelo -->
+                <div class="form-check">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="" disabled>
+                    <label class="custom-control-label" for="">El modelo no existe</label>
+                  </div>
+                </div>
+                <!-- Daños -->
+                <label for="">Daños Mecánicos</label>
+                <select id="" class="form-control">
+                  <option selected>Elige...</option>
+                  <option value="0">0: bicicleta nueva</option>
+                  <option value="1">1: muy poco uso</option>
+                  <option value="2">2: usada</option>
+                  <option value="3">3: con bastante uso</option>
+                  <option value="4">4: puede necesitar algún repuesto</option>
+                </select>
+                <label for="">Daños Estéticos</label>
+                <select id="" class="form-control">
+                  <option selected>Elige...</option>
+                  <option value="0">0: bicicleta nueva</option>
+                  <option value="1">1: muy poco uso</option>
+                  <option value="2">2: usada</option>
+                  <option value="3">3: con bastante uso</option>
+                  <option value="4">4: puede necesitar algún repuesto</option>
+                </select>
+                <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
+                <button type="button" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Imagen del Producto -->
+      <div class="formularios" id="form-3b" v-if="view === '3b'">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="form-group col-md-4">
+              <form>
+                <label for="">Imagen del Producto</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="" lang="es">
+                  <label class="custom-file-label" for="">Seleccione 1ºr imagen</label>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="" lang="es">
+                  <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="" lang="es">
+                  <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
+                </div>
+                <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
+                <button type="button" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Precio -->
+      <div class="formularios" id="form-4b" v-if="view === '4b'">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="form-group col-md-4">
+              <form>
+                <label for="">Precio</label>
+                <input class="form-control" type="number">
+                <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
+                <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Correo -->
+      <div class="formularios" id=form-5ab v-if="view==='5ab'">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="form-group col-md-4">
+              <form>
+                <label for="">Enviar email</label>
+                <input class="form-control" type="email" name="" id="">
+                <button type="button" v-on:click="view='1'" class="btn btn-info">Volver Inicio</button>
+                <button type="button" class="btn btn-info">Enviar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Proyecto Tuvalum'
+  export default {
+    name: 'app',
+    data() {
+      return {
+        msg: 'Proyecto Tuvalum',
+        view: '1',
+        select: '',
+      }
     }
   }
-}
+
 </script>
 
 <style>
-body{
-  background-color: whitesmoke;
-}
+  body {
+    background-color: whitesmoke;
+  }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
-h1, h2 {
-  font-weight: normal;
-}
-h1{
-  text-align: center;
-  color:darkblue;
-}
-h3{
-    color:blue;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  h1,
+  h2 {
+    font-weight: normal;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  h1 {
+    text-align: center;
+    color: darkblue;
+  }
 
-a {
-  color: #42b983;
-}
-label{
-  color: aqua;
-}
-.casco{
-  text-align: center;
-}
+  h3 {
+    color: blue;
+    margin: 20px;
+  }
 
-.bici{
-  text-align: center;
-}
-.formulario{
-  text-align: center;
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a {
+    color: #42b983;
+  }
+
+  label {
+    color: aqua;
+    margin: 10px;
+  }
+
+  .formularios {
+    text-align: center;
+    margin-top: 30px;
+    padding: 40px;
+  }
+
+  button {
+    margin: 20px;
+  }
+
+  img {
+    height: 150px;
+    /* width:400px; */
+  }
+
+
+  /* input{
+       margin: 60px;
+     } */
+
+  .ima {
+    text-align: left;
+    background-color: white;
+    max-height: 200px;
+    margin-bottom: 30px;
+    height: 150px;
+    width: 100%;
+  }
+
+  .titulo {
+    text-align: center;
+    /* background-color: whitesmoke; */
+    margin: 20px;
+  }
+
 </style>
