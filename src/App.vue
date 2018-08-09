@@ -6,7 +6,7 @@
         <h1>{{ msg }}</h1>
       </div>
     </div>
-    <div class="formularios" id=form-1 v-if="view === '1'">
+    <div class="formularios" id=form-1 v-if="view === '1ab'">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
@@ -44,7 +44,7 @@
                 <option value="4">marca 4</option>
                 <option value="5">marca 5</option>
               </select>
-              <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
               <button type="button" v-on:click="view='3a'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
@@ -63,7 +63,7 @@
                 <label class="custom-file-label" for="">Seleccione imagen </label>
               </div>
               <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              <button type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -262,7 +262,7 @@
                   <option value="3">3: con bastante uso</option>
                   <option value="4">4: puede necesitar algún repuesto</option>
                 </select>
-                <button type="button" v-on:click="view='1'" class="btn btn-info">Anterior</button>
+                <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
                 <button type="button" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
             </form>
             </div>
@@ -295,14 +295,38 @@
           </div>
         </div>
       </div>
-      <!-- Precio -->
+      <!-- Precio y email -->
+      <div class="formularios" id="form-4a" v-if="view === '4a'">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="form-group col-md-4">
+              <form>
+                <label for="">Precio</label>
+                <input v-model="precio" class="form-control" type="number">
+                <div v-if="precio>=1500">
+                  <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
+                </div>  
+                <label for="">Email</label>
+                <input class="form-control" type="email" id="">
+                <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
+                <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="formularios" id="form-4b" v-if="view === '4b'">
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="form-group col-md-4">
               <form>
                 <label for="">Precio</label>
-                <input class="form-control" type="number">
+                <input v-model="precio" class="form-control" type="number">
+                <div v-if="precio>=1500">
+                  <p>Productos similares al tuyo han sido vendidos con un precio medio de 1.350 euros</p>
+                </div>  
+                <label for="">Email</label>
+                <input class="form-control" type="email" id="">
                 <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
                 <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
               </form>
@@ -310,16 +334,15 @@
           </div>
         </div>
       </div>
-      <!-- Correo -->
+      <!-- Enviar Correo -->
       <div class="formularios" id=form-5ab v-if="view==='5ab'">
         <div class="container-fluid">
           <div class="row justify-content-center">
-            <div class="form-group col-md-4">
+            <div class="form-group">
               <form>
-                <label for="">Enviar email</label>
-                <input class="form-control" type="email" name="" id="">
-                <button type="button" v-on:click="view='1'" class="btn btn-info">Volver Inicio</button>
-                <button type="button" class="btn btn-info">Enviar</button>
+                <h3>Pulse el boton para enviar el correo</h3>
+                <button type="button" class="btn btn-success">Enviar</button>
+                <button type="button" v-on:click="view='1ab'" class="btn btn-info">Ir al inicio</button>
               </form>
             </div>
           </div>
@@ -334,13 +357,21 @@
     data() {
       return {
         msg: 'Proyecto Tuvalum',
-        view: '1',
+        view: '1ab',
         select: 'Elige...',
         marcas: 'Elige...',
         modelos: 'Elige...',
-        checkeado:false
+        checkeado:false,
+        precio:0,
       }
-    }
+    },
+              // computed:{
+              //   aviso: function () {
+              //     if(precio>=1500){
+              //       return this.message
+              //     }
+              //   } 
+              // }
   }
 
 </script>
