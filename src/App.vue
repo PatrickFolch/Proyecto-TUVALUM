@@ -36,16 +36,16 @@
             <form>
               <!-- Marca -->
               <label for="">Marca</label>
-              <select id="" class="form-control">
+              <select v-model="marcas" id="" class="form-control">
                   <option selected>Elige...</option>
                   <option value="1">marca 1</option>
                   <option value="2">marca 2</option>
                   <option value="3">marca 3</option>
                   <option value="4">marca 4</option>
                   <option value="5">marca 5</option>
-                </select>
+              </select>
               <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='3a'" class="btn btn-info">Siguiente</button>
+              <button :disabled="marcas==='Elige...'" type="button" v-on:click="view='3a'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -59,11 +59,11 @@
             <form>
               <label for="">Imagen del Producto</label>
               <div class="custom-file imf">
-                <input type="file" class="custom-file-input" id="" lang="es">
+                <input type="file" @change="processFile($event)" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione imagen </label>
               </div>
               <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
+              <button :disabled="this.someData===''" type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -81,9 +81,9 @@
                 <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
               </div>
               <label for="">Email</label>
-              <input class="form-control" type="email" id="">
+              <input v-model="email" class="form-control" type="email" id="">
               <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              <button :disabled="precio=== 0 || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -265,7 +265,7 @@
               </div>
               <!-- Daños -->
               <label for="">Daños Mecánicos</label>
-              <select id="" class="form-control">
+              <select v-model="dañosM" id="" class="form-control">
                     <option selected>Elige...</option>
                     <option value="0">0: bicicleta nueva</option>
                     <option value="1">1: muy poco uso</option>
@@ -274,7 +274,7 @@
                     <option value="4">4: puede necesitar algún repuesto</option>
                   </select>
               <label for="">Daños Estéticos</label>
-              <select id="" class="form-control">
+              <select v-model="dañosE" id="" class="form-control">
                     <option selected>Elige...</option>
                     <option value="0">0: bicicleta nueva</option>
                     <option value="1">1: muy poco uso</option>
@@ -283,7 +283,7 @@
                     <option value="4">4: puede necesitar algún repuesto</option>
                   </select>
               <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
+              <button type="button" :disabled="marcas==='Eliges...'||modelos==='Elige...'||dañosM==='Elige...'||dañosE==='Elige...'" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -295,26 +295,27 @@
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
             <form>
-              <label for="">Imagen del Producto</label>
+              <label for="">Imagenes del Producto</label>
               <div class="custom-file imf">
-                <input type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione 1ºr imagen</label>
+                <input @change="processFile($event)" type="file" class="custom-file-input" id="validatedCustomFile" lang="es" required>
+                <label class="custom-file-label" for="validatedCustomFile">Seleccione 1ºr imagen</label>
               </div>
               <div class="custom-file imf">
-                <input type="file" class="custom-file-input" id="" lang="es">
+                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
               </div>
               <div class="custom-file imf">
-                <input type="file" class="custom-file-input" id="" lang="es">
+                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
               </div>
               <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
+              <button type="button" :disabled="someData===''" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <!-- Precio y Email -->
     <div class="formularios" id="form-4b" v-if="view === '4b'">
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -326,9 +327,9 @@
                 <p>Productos similares al tuyo han sido vendidos con un precio medio de 1.350 euros</p>
               </div>
               <label for="">Email</label>
-              <input class="form-control" type="email" id="">
+              <input v-model="email" class="form-control" type="email" id="">
               <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
-              <button type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              <button :disabled="precio===0 || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -338,10 +339,22 @@
     <div class="formularios" id=form-5ab v-if="view==='5ab'">
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="form-group">
+          <div class="form-group col-md-4">
             <form>
+              <h3>Datos del formulario</h3>
+              <div class="formList">
+              <strong>Producto:</strong> {{select}}<br>
+              <strong>Marca:</strong> {{marcas}}<br>
+              <div v-if="modelos!=='Elige...'">
+                <strong>{{modelos}}</strong><br>
+                <strong>Daños Mecánicos:</strong> {{dañosM}}<br>
+                <strong>Daños Estéticos:</strong> {{dañosE}}<br>
+              </div>
+              <strong>Imagenes:</strong> {{JSON.stringify(someData)}}<br>
+              <strong>Precio:</strong> {{precio}}<br>
+              </div>  
               <h5>Pulse el boton para enviar el correo</h5>
-              <button type="submit" class="btn btn-success">Enviar</button>
+              <button type="submit" @click="enviar" class="btn btn-success">Enviar</button>
               <button type="button" v-on:click="view='1ab'" class="btn btn-info">Ir al inicio</button>
             </form>
           </div>
@@ -352,6 +365,9 @@
 </template>
 
 <script>
+// (function() {
+//   emailjs.init("user_ZQ18rSFkZNAwUPRKaUBVv")
+// }) 
   export default {
     name: 'app',
     data() {
@@ -363,15 +379,51 @@
         modelos: 'Elige...',
         checkeado: false,
         precio: 0,
+        email:'',
+        dañosM:'Elige...',
+        dañosE:'Elige...',
+        someData:'',
       }
+    },
+    methods:{
+      processFile(event) {
+    this.someData = event.target.files[0]
+  }
     }
+    // INTENTO DE ENVIO DE CORREO
+    // methods:{
+    //   enviar(){
+    //     let data = {
+    //       slect:this.select,
+    //       marcas:this.marcas,
+    //       modelos:this.modelos,
+    //       precio:this.precio,
+    //       email:this.email,
+    //       dañosM:this.dañosM,
+    //       dañosE:this.dañosE,
+    //    };
+    //    emailjs.send("gmail","form_contacto",data)
+    //    .then(function(response) {
+    //      if(resonse.text === 'OK') {
+    //        alert ('El correo se ha enviado de forma exitosa');
+    //      }
+    //      console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+       
+         
+    //    }, function(err) {
+    //      alert('Ocurrio un problema al enviar el correo');
+    //      console.log("FAILED. error=", err);
+         
+    //    });
+    //   }
+    // }
   }
 </script>
 
 <style>
-  body {
+  /* body {
     background-color: whitesmoke;
-  }
+  } */
   
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -465,5 +517,9 @@
   }
   .imf{
     margin:10px;
+  }
+  .formList{
+    text-align:center;
+    color:darkcyan;
   }
 </style>
