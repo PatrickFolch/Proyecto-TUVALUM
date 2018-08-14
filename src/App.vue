@@ -4,6 +4,7 @@
       <img src="./assets/indice.png">
         <h1>{{ msg }}</h1>
     </div>
+    <!-- componente 1ab -->
     <div class="formularios" id=form-1 v-if="view === '1ab'">
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -26,6 +27,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 2a -->
     <div class="formularios" id="form-2a" v-if="view === '2a'">
       <div class="container-fluid">
         <div class="row d-flex justify-content-center">
@@ -34,7 +36,7 @@
             <form>
               <!-- Marca -->
               <label for="">Marca</label>
-              <select v-model="marcas" id="" class="form-control">
+              <select v-model="marcasC" id="" class="form-control">
                   <option selected>Elige...</option>
                   <option value="marca 1">marca 1</option>
                   <option value="marca 2">marca 2</option>
@@ -49,6 +51,7 @@
         </div>
       </div>
     </div>
+  <!-- componente 3a -->
     <!-- Imagen del Producto -->
     <div id="form-3a" v-if="view === '3a'">
       <div class="container-fluid">
@@ -67,6 +70,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 4a -->
     <!-- Precio y email -->
     <div class="formularios" id="form-4a" v-if="view === '4a'">
       <div class="container-fluid">
@@ -74,10 +78,10 @@
           <div class="form-group col-md-4">
             <form>
               <label for="">Precio</label>
-              <input v-model="precio" class="form-control" type="number">
-              <div class="aviso" v-if="precio>1500">
+              <input v-model="precioC" class="form-control" type="number">
+              <!-- <div class="aviso" v-if="precioC>1500">
                 <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
-              </div>
+              </div> -->
               <label for="">Email</label>
               <input v-model="email" class="form-control" type="email" id="">
               <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
@@ -87,6 +91,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 2b -->
     <!-- Bicicletas -->
     <div class="formularios" id="form-2b" v-if="view === '2b'">
       <div class="container-fluid">
@@ -96,7 +101,7 @@
             <form>
               <!-- Marca -->
               <label for="">Marca</label>
-              <select v-model="marcas" id="" class="form-control">
+              <select v-model="marcasB" id="" class="form-control">
                   <option selected>Elige...</option>
                   <option value="marca 1">marca 1</option>
                   <option value="marca 2">marca 2</option>
@@ -287,6 +292,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 3b -->
     <!-- Imagen del Producto -->
     <div id="form-3b" v-if="view === '3b'">
       <div class="container-fluid">
@@ -313,6 +319,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 4b -->
     <!-- Precio y Email -->
     <div class="formularios" id="form-4b" v-if="view === '4b'">
       <div class="container-fluid">
@@ -320,8 +327,8 @@
           <div class="form-group col-md-4">
             <form>
               <label for="">Precio</label>
-              <input v-model="precio" class="form-control" type="number">
-              <div class="aviso" v-if="precio>1500">
+              <input v-model="precioB" class="form-control" type="number">
+              <div class="aviso" v-if="precioB>1500">
                 <p>Productos similares al tuyo han sido vendidos con un precio medio de 1.350 euros</p>
               </div>
               <label for="">Email</label>
@@ -333,6 +340,7 @@
         </div>
       </div>
     </div>
+    <!-- componente 5ab -->
     <!-- Enviar Correo -->
     <div class="formularios" id=form-5ab v-if="view==='5ab'">
       <div class="container-fluid">
@@ -342,14 +350,18 @@
               <h3>Datos del formulario</h3>
               <div class="formList">
               <strong>Producto:</strong> {{select}}<br>
-              <strong>Marca:</strong> {{marcas}}<br>
+              <div>
+                <strong>Marca:</strong> {{marcasC}}<br>
+                <strong>Precio:</strong> {{precioC}}<br>
+              </div>
               <div v-if="select==='Bicicletas'">
+                <strong>Marca:</strong> {{marcasB}}<br>
                 <strong>Modelo:</strong> {{modelos}}<br>
                 <strong>Daños Mecánicos:</strong> {{dañosM}}<br>
                 <strong>Daños Estéticos:</strong> {{dañosE}}<br>
+                <strong>Precio:</strong> {{precioB}}<br>
               </div>
               <strong>Imagenes:</strong> {{someData}}<br>
-              <strong>Precio:</strong> {{precio}}<br>
               <strong>Email:</strong> {{email}}<br>
               </div>  
               <h5>Pulse el boton para enviar el correo</h5>
@@ -374,11 +386,13 @@
         msg: 'Proyecto Tuvalum',
         view: '1ab',
         select: 'Elige...',
-        marcas: 'Elige...',
+        marcasC: 'Elige...',
+        marcasB:'Elige...',
         modelos: 'Elige...',
         checkeado: false,
         nmodelo:'',
-        precio:'',
+        precioC:'',
+        precioB:'',
         email:'',
         dañosM:'Elige...',
         dañosE:'Elige...',
