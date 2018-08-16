@@ -1,5 +1,5 @@
 <template>
-    <div class="formularios" id="form-4a" v-if="view === '4a'">
+    <div class="formularios" id="form-4a" >
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
@@ -10,9 +10,9 @@
                 <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
               </div>
               <label for="">Email</label>
-              <input v-model="email" class="form-control" type="email" id="">
-              <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
-              <button :disabled="precio==='' || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
+              <input v-model="emailC" class="form-control" type="email" id="">
+              <button type="button" v-on:click="anterior4a()" class="btn btn-info">Anterior</button>
+              <button :disabled="precioC==='' || emailC===''" type="button" v-on:click="pasPyE_A(precioC,emailC)" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -23,10 +23,11 @@
 <script>
 export default {
   name:'form4a',
+  props:['pasPyE_A','anterior4a'],
   data() {
     return{
       precioC:'',
-      email:'',
+      emailC:'',
     }
   }
 }

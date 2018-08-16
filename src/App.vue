@@ -8,46 +8,10 @@
     <form1ab v-if="view === '1ab'"  :goToCascos="goToCascos" :goToBicis="goToBicis"/>
     <!-- componente 2a -->
     <form2a v-if="view === '2a'" :pasMarcaC="pasMarcaC" :anterior2a="anterior2a" />
-  <!-- componente 3a -->
-    <!-- Imagen del Producto -->
-    <div id="form-3a" v-if="view === '3a'">
-      <div class="container-fluid">
-        <div class="row d-flex justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Imagen del Producto</label>
-              <div class="custom-file imf">
-                <input type="file" @change="processFile($event)" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione imagen </label>
-              </div>
-              <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
-              <button :disabled="this.someData===''" type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- componente 3a -->
+    <form3a v-if="view === '3a'" :pasImgC="pasImgC" :anterior3a="anterior3a" />
     <!-- componente 4a -->
-    <!-- Precio y email -->
-    <div class="formularios" id="form-4a" v-if="view === '4a'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Precio</label>
-              <input v-model="precioC" class="form-control" type="number">
-              <div class="aviso" v-if="precioC>1500">
-                <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
-              </div>
-              <label for="">Email</label>
-              <input v-model="email" class="form-control" type="email" id="">
-              <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
-              <button :disabled="precio==='' || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form4a v-if="view === '4a'" :pasPyE_A='pasPyE_A' :anterior4a="anterior4a" />
     <!-- componente 2b -->
     <!-- Bicicletas -->
     <div class="formularios" id="form-2b" v-if="view === '2b'">
@@ -350,10 +314,12 @@
         nmodelo:'',
         precioC:'',
         precioB:'',
-        email:'',
+        emailC:'',
+        emailB:'',
         dañosM:'Elige...',
         dañosE:'Elige...',
-        someData:'',
+        someDataC:'',
+        someDataB:'',
       }
     },
     methods:{
@@ -367,14 +333,30 @@
       },
       pasMarcaC(marcaC){
         this.marcasC = marcaC;
-        this.view = '3c'
+        this.view = '3a'
       },
       anterior2a(){
         this.view = '1ab'
       },
-      processFile(event) {
-    this.someData = event.target.files[0]
-  }
+      pasImgC(imgC){
+        this.someDataC = imgC;
+        this.view = '4a'
+      },
+      anterior3a(){
+        this.view = '2a'
+      },
+      pasPyE_A(coste,correo){
+        this.precioC = coste;
+        this.emailC = correo;
+        this.view = '5ab'
+      },
+      anterior4a(){
+        this.view = '3a'
+      },
+      
+       processFileB(event) {
+        this.someDataB = event.target.files[0]
+      }
     }
     // INTENTO DE ENVIO DE CORREO
     // methods:{

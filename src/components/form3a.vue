@@ -1,16 +1,16 @@
 <template>
-    <div id="form-3a" v-if="view === '3a'">
+    <div id="form-3a">
       <div class="container-fluid">
         <div class="row d-flex justify-content-center">
           <div class="form-group col-md-4">
             <form>
               <label for="">Imagen del Producto</label>
               <div class="custom-file imf">
-                <input type="file" @change="processFile($event)" class="custom-file-input" id="" lang="es">
+                <input type="file" @change="processFileC($event)" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione imagen </label>
               </div>
-              <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
-              <button :disabled="this.someData===''" type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
+              <button type="button" v-on:click="anterior3a()" class="btn btn-info">Anterior</button>
+              <button :disabled="someDataC===''" type="button" v-on:click="pasImgC(someDataC)" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -21,10 +21,16 @@
 <script>
 export default {
   name:'form3a',
+  props:['pasImgC','anterior3a'],
   data() {
     return{
-      someData:'',
+      someDataC:'',
     }
+  },
+  methods:{
+    processFileC(event) {
+        this.someDataC = event.target.files[0]
+      }
   }
 }
 </script>

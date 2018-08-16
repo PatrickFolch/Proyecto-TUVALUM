@@ -15,7 +15,7 @@
                   <option value="marca 4">marca 4</option>
                   <option value="marca 5">marca 5</option>
               </select>
-              <button type="button" v-on:click="anterior2a" class="btn btn-info">Anterior</button>
+              <button type="button" v-on:click="anterior2a()" class="btn btn-info">Anterior</button>
               <button :disabled="marcasC==='Elige...'" type="button" v-on:click="pasMarcaC(marcasC)" class="btn btn-info">Siguiente</button>
             </form>
           </div>
