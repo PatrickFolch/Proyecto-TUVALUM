@@ -1,24 +1,24 @@
 <template>
-    <div id="form-3b" v-if="view === '3b'">
+    <div id="form-3b">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
             <form>
               <label for="">Imagenes del Producto</label>
               <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
+                <input @change="processFileB($event)" type="file" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="validatedCustomFile">Seleccione 1ºr imagen</label>
               </div>
               <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
+                <input @change="processFileB($event)" type="file" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
               </div>
               <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
+                <input @change="processFileB($event)" type="file" class="custom-file-input" id="" lang="es">
                 <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
               </div>
-              <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
-              <button type="button" :disabled="someData===''" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
+              <button type="button" v-on:click="anterior3b()" class="btn btn-info">Anterior</button>
+              <button type="button" :disabled="someDataB===''" v-on:click="pasImgB(someDataB)" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -29,10 +29,16 @@
 <script>
 export default {
   name:'form3b',
+  props:['pasImgB','anterior3b'],
   data() {
     return{
-      someData:'',
+      someDataB:'',
     }
+  },
+  methods:{
+    processFileB(event) {
+        this.someDataB = event.target.files[0]
+      }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="formularios" id="form-2b" v-if="view === '2b'">
+    <div class="formularios" id="form-2b">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
@@ -191,8 +191,8 @@
                     <option value="3">3: con bastante uso</option>
                     <option value="4">4: puede necesitar algún repuesto</option>
                   </select>
-              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
-              <button type="button" :disabled="marcas==='Eliges...'||modelos==='Elige...'||dañosM==='Elige...'||dañosE==='Elige...'" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
+              <button type="button" v-on:click="anterior2b()" class="btn btn-info">Anterior</button>
+              <button type="button" :disabled="marcasB==='Eliges...'||modelos==='Elige...'||dañosM==='Elige...'||dañosE==='Elige...'" v-on:click="pasMMyD(marcasB,modelos,dañosM,dañosE)" class="btn btn-info">Siguiente</button>
             </form>
           </div>
         </div>
@@ -203,10 +203,12 @@
 <script>
 export default {
   name:'form2b',
+  props:['pasMMyD','anterior2b'],
   data() {
     return{
       marcasB:'Elige...',
       modelos:'Elige...',
+      checkeado: false,
       dañosM:'Elige...',
       dañosE:'Elige...',
     }

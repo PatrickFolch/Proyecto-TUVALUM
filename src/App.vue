@@ -8,238 +8,14 @@
     <form1ab v-if="view === '1ab'"  :goToCascos="goToCascos" :goToBicis="goToBicis"/>
     <!-- componente 2a -->
     <form2a v-if="view === '2a'" :pasMarcaC="pasMarcaC" :anterior2a="anterior2a" />
+    <!-- componente 2b -->
+    <form2b v-if="view === '2b'" :pasMMyD="pasMMyD" :anterior2b="anterior2b" />
     <!-- componente 3a -->
     <form3a v-if="view === '3a'" :pasImgC="pasImgC" :anterior3a="anterior3a" />
+    <!-- componente 3b -->
+    <form3b v-if="view === '3b'" :pasImgB="pasImgB" :anterior3b="anterior3b" />
     <!-- componente 4a -->
     <form4a v-if="view === '4a'" :pasPyE_A='pasPyE_A' :anterior4a="anterior4a" />
-    <!-- componente 2b -->
-    <!-- Bicicletas -->
-    <div class="formularios" id="form-2b" v-if="view === '2b'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <h3>Bicicletas</h3>
-            <form>
-              <!-- Marca -->
-              <label for="">Marca</label>
-              <select v-model="marcasB" id="" class="form-control">
-                  <option selected>Elige...</option>
-                  <option value="marca 1">marca 1</option>
-                  <option value="marca 2">marca 2</option>
-                  <option value="marca 3">marca 3</option>
-                  <option value="marca 4">marca 4</option>
-                  <option value="marca 5">marca 5</option>
-                </select>
-              <!-- Modelos -->
-              <div v-if="marcasB==='marca 1'">
-                <label for="">Modelo</label>
-                <select v-model="modelos" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="modelo 1a">modelo 1a</option>
-                    <option value="modelo 2a">modelo 2a</option>
-                    <option value="modelo 3a">modelo 3a</option>
-                    <option value="modelo 4a">modelo 4a</option>
-                    <option value="modelo 5a">modelo 5a</option>
-                  </select>
-                <!-- No existe modelo -->
-                <div v-if="modelos!=='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="" disabled>
-                    <label class="custom-control-label" for="">
-                        El modelo no esta en la lista</label>
-                  </div>
-                </div>
-                <div v-if="modelos==='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input v-model="checkeado" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">
-                        El modelo no esta en la lista</label>
-                  </div>
-                  <div class="nmodelo" v-if="checkeado===true">
-                    <div class="form-group">
-                      <label for="">Introduzca nuevo modelo</label>
-                      <input v-model="nmodelo" class="form-control" type="text">
-                      <button :disabled="nmodelo===''" v-on:click="checkeado=false" class="btn btn-info" type="button">Añadir</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="marcasB==='marca 2'">
-                <label for="">Modelo</label>
-                <select v-model="modelos" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="modelo 1b">modelo 1b</option>
-                    <option value="modelo 2b">modelo 2b</option>
-                    <option value="modelo 3b">modelo 3b</option>
-                    <option value="modelo 4b">modelo 4b</option>
-                    <option value="modelo 5b">modelo 5b</option>
-                  </select>
-                <!-- No existe modelo -->
-                <div v-if="modelos!=='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckDisabled" disabled>
-                    <label class="custom-control-label" for="customCheckDisabled">El modelo no esta en la lista</label>
-                  </div>
-                </div>
-                <div v-if="modelos==='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input v-model="checkeado" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">El modelo no esta en la lista</label>
-                  </div>
-                  <div class="nmodelo" v-if="checkeado===true">
-                    <div class="form-group">
-                      <label for="">Introduzaca nuevo modelo</label>
-                      <input v-model="nmodelo" class="form-control" type="text">
-                      <button :disabled="nmodelo===''" v-on:click="checkeado=false" class="btn btn-info" type="button">Añadir</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="marcasB==='marca 3'">
-                <label for="">Modelo</label>
-                <select v-model="modelos" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="modelo 1c">modelo 1c</option>
-                    <option value="modelo 2c">modelo 2c</option>
-                    <option value="modelo 3c">modelo 3c</option>
-                    <option value="modelo 4c">modelo 4c</option>
-                    <option value="modelo 5c">modelo 5c</option>
-                  </select>
-                <!-- No existe modelo -->
-                <div v-if="modelos!=='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckDisabled" disabled>
-                    <label class="custom-control-label" for="customCheckDisabled">El modelo no esta en la lista</label>
-                  </div>
-                </div>
-                <div v-if="modelos==='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input v-model="checkeado" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">El modelo no esta en la lista</label>
-                  </div>
-                  <div class="nmodelo" v-if="checkeado===true">
-                    <div class="form-group">
-                      <label for="">Introduzca nuevo modelo</label>
-                      <input v-model="nmodelo" class="form-control" type="text">
-                      <button :disabled="nmodelo===''" v-on:click="checkeado=false" class="btn btn-info" type="button">Añadir</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="marcasB==='marca 4'">
-                <label for="">Modelo</label>
-                <select v-model="modelos" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="modelo 1d">modelo 1d</option>
-                    <option value="modelo 2d">modelo 2d</option>
-                    <option value="modelo 3d">modelo 3d</option>
-                    <option value="modelo 4d">modelo 4d</option>
-                    <option value="modelo 5d">modelo 5d</option>
-                  </select>
-                <!-- No existe modelo -->
-                <div v-if="modelos!=='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckDisabled" disabled>
-                    <label class="custom-control-label" for="customCheckDisabled">El modelo no esta en la lista</label>
-                  </div>
-                </div>
-                <div v-if="modelos==='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input v-model="checkeado" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">El modelo no esta en la lista</label>
-                  </div>
-                  <div class="nmodelo" v-if="checkeado===true">
-                    <div class="form-group">
-                      <input v-model="nmodelo" class="form-control" type="text">
-                      <button :disabled="nmodelo===''" v-on:click="checkeado=false" class="btn btn-info" type="button">Añadir</button>
-                     </div>
-                  </div>
-                </div>
-              </div>
-              <div v-if="marcasB==='marca 5'">
-                <label for="">Modelo</label>
-                <select v-model="modelos" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="modelo 1e">modelo 1e</option>
-                    <option value="modelo 2e">modelo 2e</option>
-                    <option value="modelo 3e">modelo 3e</option>
-                    <option value="modelo 4e">modelo 4e</option>
-                    <option value="modelo 5e">modelo 5e</option>
-                  </select>
-                <!-- No existe modelo -->
-                <div v-if="modelos!=='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheckDisabled" disabled>
-                    <label class="custom-control-label" for="customCheckDisabled">El modelo no esta en la lista</label>
-                  </div>
-                </div>
-                <div v-if="modelos==='Elige...'">
-                  <div class="custom-control custom-checkbox">
-                    <input v-model="checkeado" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">El modelo no esta en la lista</label>
-                  </div>
-                  <div class="nmodelo" v-if="checkeado===true">
-                    <div class="form-group">
-                      <label for="">Introduzca nuevo modelo</label>
-                      <input v-model="nmodelo" class="form-control" type="text">
-                      <button :disabled="nmodelo===''" v-on:click="checkeado=false" class="btn btn-info" type="button">Añadir</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Daños -->
-              <label for="">Daños Mecánicos</label>
-              <select v-model="dañosM" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="0">0: bicicleta nueva</option>
-                    <option value="1">1: muy poco uso</option>
-                    <option value="2">2: usada</option>
-                    <option value="3">3: con bastante uso</option>
-                    <option value="4">4: puede necesitar algún repuesto</option>
-                  </select>
-              <label for="">Daños Estéticos</label>
-              <select v-model="dañosE" id="" class="form-control">
-                    <option selected>Elige...</option>
-                    <option value="0">0: bicicleta nueva</option>
-                    <option value="1">1: muy poco uso</option>
-                    <option value="2">2: usada</option>
-                    <option value="3">3: con bastante uso</option>
-                    <option value="4">4: puede necesitar algún repuesto</option>
-                  </select>
-              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Anterior</button>
-              <button type="button" :disabled="marcas==='Eliges...'||modelos==='Elige...'||dañosM==='Elige...'||dañosE==='Elige...'" v-on:click="view='3b'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- componente 3b -->
-    <!-- Imagen del Producto -->
-    <div id="form-3b" v-if="view === '3b'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Imagenes del Producto</label>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="validatedCustomFile">Seleccione 1ºr imagen</label>
-              </div>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
-              </div>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
-              </div>
-              <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
-              <button type="button" :disabled="someData===''" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- componente 4b -->
     <!-- Precio y Email -->
     <div class="formularios" id="form-4b" v-if="view === '4b'">
@@ -353,10 +129,23 @@
       anterior4a(){
         this.view = '3a'
       },
-      
-       processFileB(event) {
-        this.someDataB = event.target.files[0]
-      }
+      pasMMyD(marcaB,modelo,dañoM,dañoE){
+        this.view = '3b'
+        this.marcasB = marcaB;
+        this.modelos = modelo;
+        this.dañosM = dañoM;
+        this,dañosE = dañoE;
+      },
+      anterior2b(){
+        this.view = '1ab'
+      },
+      pasImgB(imgB){
+          this.someDataC = imgB;
+          this.view = '4b'
+      },
+      anterior3b(){
+        this.view = '2b'
+      }  
     }
     // INTENTO DE ENVIO DE CORREO
     // methods:{
