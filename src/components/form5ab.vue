@@ -1,29 +1,31 @@
 <template>
-      <div class="formularios" id=form-5ab v-if="view==='5ab'">
+    <div class="formularios" id=form-5ab>
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="form-group col-md-4">
-            <form>
+            <!-- <form>
               <h3>Datos del formulario</h3>
               <div class="formList">
               <strong>Producto:</strong> {{select}}<br>
-              <div>
+              <div v-if="select==='Cascos'">
                 <strong>Marca:</strong> {{marcasC}}<br>
+                <strong>Imagenes:</strong> {{someDataC}}<br>
                 <strong>Precio:</strong> {{precioC}}<br>
+                 <strong>Email:</strong> {{emailC}}<br>
               </div>
               <div v-if="select==='Bicicletas'">
                 <strong>Marca:</strong> {{marcasB}}<br>
                 <strong>Modelo:</strong> {{modelos}}<br>
                 <strong>Daños Mecánicos:</strong> {{dañosM}}<br>
                 <strong>Daños Estéticos:</strong> {{dañosE}}<br>
+                <strong>Imagenes:</strong> {{someDataB}}<br>
                 <strong>Precio:</strong> {{precioB}}<br>
+                <strong>Email:</strong> {{emailB}}<br>                
               </div>
-              <strong>Imagenes:</strong> {{someData}}<br>
-              <strong>Email:</strong> {{email}}<br>
-              </div>  
+              </div>   -->
               <h5>Pulse el boton para enviar el correo</h5>
-              <button type="submit" @click="enviar" class="btn btn-success">Enviar</button>
-              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Ir al inicio</button>
+              <button type="submit" v-onclick="enviarEmail()" class="btn btn-success">Enviar</button>
+              <button type="button" v-on:click="inicio()" class="btn btn-info">Ir al inicio</button>
             </form>
           </div>
         </div>
@@ -33,7 +35,13 @@
 
 <script>
 export default {
-    
+  name:'form5ab',
+  props:['enviarEmail','inicio'],
+  data() {
+    return{
+        
+    }
+  }
 }
 </script>
  

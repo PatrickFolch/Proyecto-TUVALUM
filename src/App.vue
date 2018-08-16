@@ -17,58 +17,9 @@
     <!-- componente 4a -->
     <form4a v-if="view === '4a'" :pasPyE_A='pasPyE_A' :anterior4a="anterior4a" />
     <!-- componente 4b -->
-    <!-- Precio y Email -->
-    <div class="formularios" id="form-4b" v-if="view === '4b'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Precio</label>
-              <input v-model="precioB" class="form-control" type="number">
-              <div class="aviso" v-if="precioB>1500">
-                <p>Productos similares al tuyo han sido vendidos con un precio medio de 1.350 euros</p>
-              </div>
-              <label for="">Email</label>
-              <input v-model="email" class="form-control" type="email" id="">
-              <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
-              <button :disabled="precio==='' || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form4b v-if="view === '4b'" :pasPyE_B='pasPyE_B' :anterior4b="anterior4b" />
     <!-- componente 5ab -->
-    <!-- Enviar Correo -->
-    <div class="formularios" id=form-5ab v-if="view==='5ab'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <h3>Datos del formulario</h3>
-              <div class="formList">
-              <strong>Producto:</strong> {{select}}<br>
-              <div>
-                <strong>Marca:</strong> {{marcasC}}<br>
-                <strong>Precio:</strong> {{precioC}}<br>
-              </div>
-              <div v-if="select==='Bicicletas'">
-                <strong>Marca:</strong> {{marcasB}}<br>
-                <strong>Modelo:</strong> {{modelos}}<br>
-                <strong>Daños Mecánicos:</strong> {{dañosM}}<br>
-                <strong>Daños Estéticos:</strong> {{dañosE}}<br>
-                <strong>Precio:</strong> {{precioB}}<br>
-              </div>
-              <strong>Imagenes:</strong> {{someData}}<br>
-              <strong>Email:</strong> {{email}}<br>
-              </div>  
-              <h5>Pulse el boton para enviar el correo</h5>
-              <button type="submit" @click="enviar" class="btn btn-success">Enviar</button>
-              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Ir al inicio</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form5ab v-if="view === '5ab'" :enviarEmail="enviarEmail" :inicio="inicio" />
   </div>
 </template>
 
@@ -121,9 +72,9 @@
       anterior3a(){
         this.view = '2a'
       },
-      pasPyE_A(coste,correo){
-        this.precioC = coste;
-        this.emailC = correo;
+      pasPyE_A(costeC,correoC){
+        this.precioC = costeC;
+        this.emailC = correoC;
         this.view = '5ab'
       },
       anterior4a(){
@@ -145,7 +96,22 @@
       },
       anterior3b(){
         this.view = '2b'
-      }  
+      },
+      pasPyE_B(costeB,correoB){
+        this.precioB = costeB;
+        this.emailB = correoB;
+        this.view = '5ab'
+      },
+      anterior4b(){
+        this.view = '3b'
+      },
+      enviarEmail(){
+
+      },
+      inicio(){
+        this.view = '1ab'
+      }
+
     }
     // INTENTO DE ENVIO DE CORREO
     // methods:{
