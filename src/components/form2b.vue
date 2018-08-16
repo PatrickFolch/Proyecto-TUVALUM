@@ -1,55 +1,4 @@
 <template>
-  <div id="app">
-    <div class="container-fluid ima">
-      <img src="./assets/indice.png">
-        <h1>{{ msg }}</h1>
-    </div>
-    <!-- componente 1ab -->
-    <form1ab v-if="view === '1ab'"  :goToCascos="goToCascos" :goToBicis="goToBicis"/>
-    <!-- componente 2a -->
-    <form2a v-if="view === '2a'" :pasMarcaC="pasMarcaC" :anterior2a="anterior2a" />
-  <!-- componente 3a -->
-    <!-- Imagen del Producto -->
-    <div id="form-3a" v-if="view === '3a'">
-      <div class="container-fluid">
-        <div class="row d-flex justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Imagen del Producto</label>
-              <div class="custom-file imf">
-                <input type="file" @change="processFile($event)" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione imagen </label>
-              </div>
-              <button type="button" v-on:click="view='2a'" class="btn btn-info">Anterior</button>
-              <button :disabled="this.someData===''" type="button" v-on:click="view='4a'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- componente 4a -->
-    <!-- Precio y email -->
-    <div class="formularios" id="form-4a" v-if="view === '4a'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Precio</label>
-              <input v-model="precioC" class="form-control" type="number">
-              <div class="aviso" v-if="precioC>1500">
-                <p>Productos similares al tuyo han sido vendios con un precio medio de 1.350 euros</p>
-              </div>
-              <label for="">Email</label>
-              <input v-model="email" class="form-control" type="email" id="">
-              <button type="button" v-on:click="view='3a'" class="btn btn-info">Anterior</button>
-              <button :disabled="precio==='' || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- componente 2b -->
-    <!-- Bicicletas -->
     <div class="formularios" id="form-2b" v-if="view === '2b'">
       <div class="container-fluid">
         <div class="row justify-content-center">
@@ -249,174 +198,24 @@
         </div>
       </div>
     </div>
-    <!-- componente 3b -->
-    <!-- Imagen del Producto -->
-    <div id="form-3b" v-if="view === '3b'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Imagenes del Producto</label>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="validatedCustomFile">Seleccione 1ºr imagen</label>
-              </div>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione 2ºn imagen</label>
-              </div>
-              <div class="custom-file imf">
-                <input @change="processFile($event)" type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Seleccione 3ºr imagen</label>
-              </div>
-              <button type="button" v-on:click="view='2b'" class="btn btn-info">Anterior</button>
-              <button type="button" :disabled="someData===''" v-on:click="view='4b'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- componente 4b -->
-    <!-- Precio y Email -->
-    <div class="formularios" id="form-4b" v-if="view === '4b'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <label for="">Precio</label>
-              <input v-model="precioB" class="form-control" type="number">
-              <div class="aviso" v-if="precioB>1500">
-                <p>Productos similares al tuyo han sido vendidos con un precio medio de 1.350 euros</p>
-              </div>
-              <label for="">Email</label>
-              <input v-model="email" class="form-control" type="email" id="">
-              <button type="button" v-on:click="view='3b'" class="btn btn-info">Anterior</button>
-              <button :disabled="precio==='' || email===''" type="button" v-on:click="view='5ab'" class="btn btn-info">Siguiente</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- componente 5ab -->
-    <!-- Enviar Correo -->
-    <div class="formularios" id=form-5ab v-if="view==='5ab'">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="form-group col-md-4">
-            <form>
-              <h3>Datos del formulario</h3>
-              <div class="formList">
-              <strong>Producto:</strong> {{select}}<br>
-              <div>
-                <strong>Marca:</strong> {{marcasC}}<br>
-                <strong>Precio:</strong> {{precioC}}<br>
-              </div>
-              <div v-if="select==='Bicicletas'">
-                <strong>Marca:</strong> {{marcasB}}<br>
-                <strong>Modelo:</strong> {{modelos}}<br>
-                <strong>Daños Mecánicos:</strong> {{dañosM}}<br>
-                <strong>Daños Estéticos:</strong> {{dañosE}}<br>
-                <strong>Precio:</strong> {{precioB}}<br>
-              </div>
-              <strong>Imagenes:</strong> {{someData}}<br>
-              <strong>Email:</strong> {{email}}<br>
-              </div>  
-              <h5>Pulse el boton para enviar el correo</h5>
-              <button type="submit" @click="enviar" class="btn btn-success">Enviar</button>
-              <button type="button" v-on:click="view='1ab'" class="btn btn-info">Ir al inicio</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
-// (function() {
-//   emailjs.init("user_ZQ18rSFkZNAwUPRKaUBVv")
-// }) 
-  export default {
-    name: 'app',
-    data() {
-      return {
-        msg: 'Proyecto Tuvalum',
-        view: '1ab',
-        select: 'Elige...',
-        marcasC: 'Elige...',
-        marcasB:'Elige...',
-        modelos: 'Elige...',
-        checkeado: false,
-        nmodelo:'',
-        precioC:'',
-        precioB:'',
-        email:'',
-        dañosM:'Elige...',
-        dañosE:'Elige...',
-        someData:'',
-      }
-    },
-    methods:{
-      goToCascos(selection){
-        this.select = selection;
-        this.view = '2a'
-      },
-       goToBicis(selection){
-        this.select = selection;
-        this.view = '2b'
-      },
-      pasMarcaC(marcaC){
-        this.marcasC = marcaC;
-        this.view = '3c'
-      },
-      anterior2a(){
-        this.view = '1ab'
-      },
-      processFile(event) {
-    this.someData = event.target.files[0]
-  }
+export default {
+  name:'form2b',
+  data() {
+    return{
+      marcasB:'Elige...',
+      modelos:'Elige...',
+      dañosM:'Elige...',
+      dañosE:'Elige...',
     }
-    // INTENTO DE ENVIO DE CORREO
-    // methods:{
-    //   enviar(){
-    //     let data = {
-    //       slect:this.select,
-    //       marcas:this.marcas,
-    //       modelos:this.modelos,
-    //       precio:this.precio,
-    //       email:this.email,
-    //       dañosM:this.dañosM,
-    //       dañosE:this.dañosE,
-    //    };
-    //    emailjs.send("gmail","form_contacto",data)
-    //    .then(function(response) {
-    //      if(resonse.text === 'OK') {
-    //        alert ('El correo se ha enviado de forma exitosa');
-    //      }
-    //      console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-       
-         
-    //    }, function(err) {
-    //      alert('Ocurrio un problema al enviar el correo');
-    //      console.log("FAILED. error=", err);
-         
-    //    });
-    //   }
-    // }
   }
+}
 </script>
 
 <style>
-  
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-  
-  h1,
+ h1,
   h2 {
     font-weight: normal;
   }
@@ -465,27 +264,6 @@
     margin: 20px;
   }
   
-  img {
-    height: 150px;
-  }
-    
-  .ima {
-    text-align: center;
-    background-color: white;
-    max-height: 200px;
-    margin-bottom:100px;
-    height: 150px;
-    width: 100%;
-  }
-  
-  .aviso {
-    margin: 10px;
-    padding: 10px;
-    background-color: cadetblue;
-    color: white;
-    border-radius: 20px;
-  }
-  
   .nmodelo {
     margin: 10px;
     padding: 30px;
@@ -493,15 +271,5 @@
     border-radius: 20px;
     min-width:200px;
   }
-  .imf{
-    margin:10px;
-  }
-  .formList{
-    text-align:left;
-    color:darkcyan;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    padding:30px;
-    min-width: 200px;
-  }
+  
 </style>
